@@ -1,0 +1,92 @@
+.header_{
+    display: flex;
+    justify-content: space-between;
+    height: 65px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+
+}
+
+.header_search{
+    /* display: inline-block; */
+    display: flex;
+    margin-top: 15px;
+}
+.header_logo{
+    /* display: flex; */
+    display: block;
+    margin-left: 90px;
+}
+.logo_s{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(83, 27, 135);
+    font-size: 50px;
+}
+.logo_b{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:rgb(205, 98, 22);
+}
+
+.btnn{
+    color: white;
+    background: purple;
+    padding: 8px 12px;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: auto;
+    margin-right: 90px;
+   
+}
+
+.header_s {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the content horizontally */
+    margin-right: 100px;
+    
+  }
+  
+  .header_s input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 400px;
+    height: 40px;
+  }
+  
+  .header_s button {
+    background-color: purple;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    margin-bottom: 6px;
+  }
+  
+  .header_s button:hover {
+    background-color: rgb(164, 15, 164);
+  }
+
+  .header_s select {
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 400px;
+    height: 40px;
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  

@@ -1,0 +1,89 @@
+.addproduct-label{
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    justify-content: left;    
+    font-family: Arial, Helvetica, sans-serif;  
+}
+textarea{
+    
+    border: 2px solid black;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    width: 80%;
+    margin: 20px 0px;
+    padding: 7px;
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+
+select {
+    border: 2px solid black;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+    width: 80%;
+    margin: 20px 0px;
+    padding: 7px;
+    font-weight: 300;
+}
+
+/* Optionally, you can style the options for better readability */
+select option {
+    background-color: white;
+    color: #111111;
+    font-weight: normal;
+}
+
+/* AddProduct.css */
+
+/* Add styles for negotiable and non-negotiable labels */
+.negotiable-label {
+    background-color: rgba(241, 220, 28, 0.813);
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+    border: 2px solid #ccc;
+    border-radius: 10px; /* Adjust the roundness as needed */
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .non-negotiable-label {
+    background-color: rgba(36, 224, 202, 0.87);
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+    border: 2px solid #ccc;
+    border-radius: 10px; /* Adjust the roundness as needed */
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Add styles for checked radio buttons */
+ */
+   */
+
+
+   /* AddProduct.css */
+
+/* Add styles for negotiable and non-negotiable labels */
+.negotiable-label, .non-negotiable-label {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+    border: 2px solid #ccc;
+    border-radius: 10px; /* Adjust the roundness as needed */
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Add styles for checked radio buttons */
+  .negotiable-label input:checked {
+    border-color: darkgoldenrod; /* You can customize this color */
+  }
+  
+  .non-negotiable-label input:checked {
+    border-color: navy; /* You can customize this color */
+  }
+  

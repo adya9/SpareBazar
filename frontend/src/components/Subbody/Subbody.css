@@ -1,0 +1,35 @@
+.whole{
+    margin-top: 150px;
+    text-align: center;
+}
+.text_heading{
+   
+    align-items: center;
+    margin: auto;
+    margin-left: 20px;
+}
+
+label{
+    font-size: 180px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 400;
+    color: rgb(83, 27, 135);
+}
+
+.bazar{
+    color:rgb(205, 98, 22);
+}
+
+.text{
+    font-size: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 200;
+    color: rgb(29, 27, 135);
+    margin-left: 200px;
+
+}
+
+.added-image{
+    height: 300px;
+    width: 300px;
+}

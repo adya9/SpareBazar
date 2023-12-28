@@ -1,0 +1,42 @@
+#del,
+.edit-link,
+.delete-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#del {
+    color: white;
+    background: rgb(228, 17, 17);
+    border: 2px solid white;
+}
+
+.edit-link,
+.delete-btn {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.edit-link {
+    background-color: #003400;
+    color: #fff;
+    text-decoration: none;
+}
+
+.edit-link:hover,
+.delete-btn:hover {
+    background-color: #00474f;
+}
+
+/* Add this to your CSS file */
+.button-container {
+    display: flex;
+    gap: 10px; /* Adjust the gap as needed */
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
