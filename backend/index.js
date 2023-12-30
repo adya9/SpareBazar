@@ -43,7 +43,7 @@ const port = 4000
 
 const mongoose = require("mongoose");
 const { Socket } = require('dgram');
-mongoose.connect("mongodb://localhost:27017/sparebazar").then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/sparebazar").then(() => {
   console.log("mongoose connected ")
 }).catch((e) => {
   console.log("not connected")
