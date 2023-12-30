@@ -206,6 +206,14 @@ function Header({ user, ...props }) {
                                     <button className="btnn" style={{ width: '100%' }}>PROFILE  </button>
                                 </Link>}
                         </div>
+
+                        <div style={{ margin: '8px' }}>
+                            {!!localStorage.getItem('token') &&
+                                <Link to="/admin-page" style={{ textDecoration: 'none' }}>
+                                    <button className="btnn" style={{ width: '100%' }}>DASHBOARD  </button>
+                                </Link>}
+                        </div>
+
                         <div style={{ margin: '8px' }}>
                             {!!localStorage.getItem('token') &&
                                 <Link to="/add-product" style={{ textDecoration: 'none' }}>
@@ -224,6 +232,7 @@ function Header({ user, ...props }) {
                                     <button className="btnn" style={{ width: '100%' }}>MY PRODUCT  </button>
                                 </Link>}
                         </div>
+
                         <div style={{ margin: '8px' }}>
                             {!localStorage.getItem('token') ?
                                 // <Link to="/login">  LOGIN </Link> 
