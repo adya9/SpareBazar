@@ -50,12 +50,25 @@ mongoose.connect("mongodb://127.0.0.1:27017/sparebazar").then(() => {
   console.log(e)
 })
 
-// const Users = mongoose.model('Users', { username: String, password: String, likedProducts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Products' }] });
-
-
+// get 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Backend is Running!!')
 })
+app.get('/search',productController.search);
+
+app.get('/get-products',productController.getProducts);
+
+app.get('/get-users',userController.getAllUsers);
+
+app.get('/get-product/:pId',productController.getProductsById );
+
+app.get('/get-user/:uId', userController.getUserById);
+
+
+app.get('/my-profile/:uId',userController.myProfileById);
+
+// post 
+app.post('/signup', userController.signup);
 
 app.post('/like-product', userController.likeProducts)
 
@@ -65,23 +78,6 @@ app.post('/liked-products', userController.likedProducts);
 
 app.post('/my-products', productController.myProducts);
 
-
-// app.post('/liked-products', (req, res) => {
-//   const { userId } = req.body;
-
-//   Users.findOne({ _id: userId })
-//       .populate('likedProducts')
-//       .then((result) => {
-//           res.json({ message: 'Success', products: result.likedProducts });
-//       })
-//       .catch((err) => {
-//           console.error('Error fetching liked products:', err);
-//           res.status(500).json({ message: 'Server error' });
-//       });
-// });
-
-
-
 app.post('/add-product', upload.single('pimage'),productController.addProduct)
 
 app.post('/edit-product', upload.single('pimage'),productController.editProduct)
@@ -90,58 +86,16 @@ app.post('/approve-product/:pId',productController.approveProducts)
 
 app.post('/edit-profile/:userId', userController.editProfile);
 
-app.get('/search',productController.search);
-
-app.get('/get-products',productController.getProducts);
-
-app.get('/get-users',userController.getAllUsers);
-
-app.delete('/delete-user/',userController.deleteUser)
-
-app.delete('/delete-product',productController.deleteProduct);
-
-app.get('/get-product/:pId',productController.getProductsById );
-
-
-// app.get('/get-user/:uId',(req,res)=>{
-//   const _userId=req.params.uId;
-//   Users.findOne({ _id: _userId })
-//   .then((result) => {
-  
-//     res.send({ message: 'Success',user:result})
-//   })
-//   .catch((err) => {
-//     res.send({ message: 'server err' })
-//   })
-// })
-
-app.get('/get-user/:uId', userController.getUserById);
-
-app.post('/signup', userController.signup);
-
-// app.post('/my-profile/:userId',(req,res)=>{
-//   let uid=req.params.userId;
-//   Users.findOne({ _id: uid})
-//   .then((result)=>{
-//     res.send({
-//       message:'success',user:{
-//         // email:result.email,
-//         // mobile:result.mobile,
-//         username:result.username
-//       }
-//     })
-//   })
-//   .catch(()=>{
-//     res.send({message:'server Error'})
-//   })
-//   return;
-// })
-
-app.get('/my-profile/:uId',userController.myProfileById);
-
 app.post('/login', userController.login);
 
 app.post('/admin-login', userController.adminlogin);
+
+
+// delete
+app.delete('/delete-user/',userController.deleteUser);
+
+app.delete('/delete-product',productController.deleteProduct);
+
 
 let messages=[]
 

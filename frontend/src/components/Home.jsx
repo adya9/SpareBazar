@@ -47,7 +47,6 @@ function Home() {
 	}, [refresh]);
 
 	const handlesearch = (value) => {
-		// console.log("hh",value);
 
 		setsearch(value);
 	};

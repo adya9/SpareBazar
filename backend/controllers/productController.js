@@ -107,9 +107,6 @@ module.exports.editProduct= (req, res) => {
 
     const addedBy=req.body.userId;
   
-  
-    // const product = new Products({ pname, pdesc, price, category, pimage,addedBy,
-    //   pLoc:{type:'Point',coordinates:[plat,plong]} });
     let editObj={};
 
     if(pname){
@@ -168,24 +165,6 @@ module.exports.approveProducts = async (req, res) => {
   } catch (e) {
       res.send({ message: 'Server error while updating ' + `\n ${e}` });
   }
-  // const productId = req.body.productId;
-
-  // // Update the product in the database
-  // Products.findByIdAndUpdate(
-  //   productId,
-  //   { $set: { isApproved: true } },
-  //   { new: true }
-  // )
-  //   .then((result) => {
-  //     if (!result) {
-  //       return res.status(404).json({ message: 'Product not found' });
-  //     }
-
-  //     res.send({ message: 'Product approved successfully', product: result });
-  //   })
-  //   .catch(() => {
-  //     res.send({ message: 'error in approving ' });
-  //   });
 }
 
 module.exports.getProducts= (req, res) => {
