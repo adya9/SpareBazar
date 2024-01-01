@@ -93,6 +93,8 @@ app.get('/search',productController.search);
 
 app.get('/get-products',productController.getProducts);
 
+app.delete('/delete-user/',userController.deleteUser)
+
 app.post('/delete-product',productController.deleteProduct);
 
 app.get('/get-product/:pId',productController.getProductsById );

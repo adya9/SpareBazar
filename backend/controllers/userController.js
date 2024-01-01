@@ -89,6 +89,30 @@ module.exports.myProfileById= (req, res) => {
   }
 
 
+module.exports.getAllUsers = (req, res) => {
+  Users.find({})
+    .then((users) => {
+      res.send(users);
+    })
+    .catch((error) => {
+      console.error('Error getting users:', error);
+      res.status(500).send({ message: 'Server error' });
+    });
+};
+
+module.exports.deleteUser = (req, res) => {
+  const userId = req.body.uId;
+
+  Users.findByIdAndRemove(userId)
+    .then(() => {
+      res.send({ message: 'User deleted successfully' });
+    })
+    .catch((error) => {
+      console.error('Error deleting user:', error);
+      res.status(500).send({ message: 'Server error' });
+    });
+};
+
 module.exports.getUserById=(req, res) => {
     const _userId = req.params.uId;  // Use req.params.uId to get the user ID
   
