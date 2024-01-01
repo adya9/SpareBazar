@@ -81,6 +81,7 @@ app.post('/my-products', productController.myProducts);
 // });
 
 
+
 app.post('/add-product', upload.single('pimage'),productController.addProduct)
 
 app.post('/edit-product', upload.single('pimage'),productController.editProduct)
@@ -93,9 +94,11 @@ app.get('/search',productController.search);
 
 app.get('/get-products',productController.getProducts);
 
+app.get('/get-users',userController.getAllUsers);
+
 app.delete('/delete-user/',userController.deleteUser)
 
-app.post('/delete-product',productController.deleteProduct);
+app.delete('/delete-product',productController.deleteProduct);
 
 app.get('/get-product/:pId',productController.getProductsById );
 
