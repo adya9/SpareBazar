@@ -34,7 +34,7 @@ function NavLinks() {
 export default function SideNav() {
 	return (
 		<div className="flex h-screen flex-col items-center bg-gray-100 m-2 shadow-lg w-64">
-			<div className="flex items-center justify-center w-full h-20  bg-blue-600 rounded-lg shadow-md">
+			<div className="flex items-center justify-center w-full h-20  bg-[#800080] rounded-lg shadow-md">
 				{/* Replace with your actual logo */}
 				<a
 					href="/"
