@@ -1,0 +1,78 @@
+/* General styling for the product detail page */
+.product-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px; /* Adds space between the image and the product info */
+    max-width: 1200px;
+    margin: auto;
+    background: #f5f5f5; /* Background color of the product detail container */
+}
+
+/* Styling for the product image section */
+.product-display {
+    flex-basis: 40%; /* Adjusted to take up less space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.product-display img {
+    max-width: 100%;
+    max-height: 300px; /* Controls the height of the image */
+    border: 1px solid #ddd; /* Adds a border around the image */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softens the shadow */
+}
+
+/* Styling for the product information section */
+.product-info {
+    flex-basis: 60%; /* Adjusted to take up more space */
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Aligns items vertically */
+    justify-content: center; /* Centers the content vertically */
+    border: 1px solid #ddd; /* Adds a border around the product info */
+    border-radius: 8px; /* Rounds the corners of the product info box */
+    background: #fff; /* Sets the background to white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a shadow to the product info box */
+}
+
+.product-info h2, .product-info h4, .product-info p {
+    margin: 5px 0; /* Adds a small margin to all elements */
+}
+
+/* Styling for the price */
+.product-info p {
+    font-size: 1.5em; /* Increases the font size for the price */
+    color: #333; /* Darker text color for better readability */
+    margin-bottom: 15px; /* Adds more space below the price */
+}
+
+/* Styling for the Buy Now button */
+.buy-now-button {
+    padding: 10px 20px;
+    background-color: #000; /* Sets the button color to black */
+    color: #fff; /* Sets the text color to white */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase; /* Makes the button text uppercase */
+    margin-top: 20px; /* Adds space above the button */
+    align-self: start; /* Aligns the button to the start of the flex container */
+    border-radius: 4px; /* Rounds the button corners */
+    transition: background-color 0.3s ease; /* Adds a transition for the background color */
+}
+
+.buy-now-button:hover {
+    background-color: #444; /* Changes the button color on hover */
+}
+
+
+
+
+
+
+
+                                   
