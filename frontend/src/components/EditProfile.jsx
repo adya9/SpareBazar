@@ -1,87 +1,80 @@
-// import './Signup.css';
-import {useState,useEffect} from 'react';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+function EditProfile({ user }) {
+  const navigate = useNavigate();
+  const [name, setName] = useState(user.name || "");
+  const [phone, setPhone] = useState(user.phone || "");
+  const [about, setAbout] = useState(user.about || "");
 
-function EditProfile(){
+  // No need to fetch user data here if it's being passed down as props
 
-    const navigate= useNavigate();
+  const handleApi = () => {
+    const userId = localStorage.getItem("userId");
+    const url = `http://localhost:4000/edit-profile/${userId}`;
+    const data = {
+      name,
+      phone,
+      about,
+    };
 
-    const [username,setusername]=useState('');
-    const [password,setpassword]=useState('');
-    const [name,setname]=useState('');
-    const [phone,setphone]=useState('');
-    const [about,setabout]=useState('');
+    axios
+      .post(url, data)
+      .then((res) => {
+        if (res.data.message) {
+          alert(res.data.message);
+          navigate("/my-profile");
+        }
+      })
+      .catch((err) => {
+        alert("Error in updating");
+        console.log(err);
+      });
+  };
 
-
-
-    useEffect(() => {
-        const url = 'http://localhost:4000/my-profile/' + localStorage.getItem('userId');
-
-        axios.get(url)
-            .then((res) => {
-             
-                if (res.data.user) {
-                    console.log(res.data.user);
-                    let product=res.data.user;
-                    setname(product.name);
-                    setphone(product.phone);
-                    setabout(product.about);
-                    
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                alert("SERVER ERROR");
-            })
-    }, [])
-
-    // console.log({username,password});
-    const handleApi=()=>{
-    const userId = localStorage.getItem('userId');
-    const url = `http://localhost:4000/edit-profile/`+localStorage.getItem('userId');;
-        const data = {
-            name: name,
-            phone: phone,
-            about: about,
-          };
-      
-        axios.post(url,data)
-        .then((res)=>{
-            console.log(res);
-            if(res.data.message)
-            {
-                alert(res.data.message);
-                navigate('/my-profile')
-            }
-
-        })
-        .catch((err)=>{
-            alert('error in updating');
-            console.log(err);
-        })
-
-    }
-    
-    return(
+  return (
+    <div className="p-4">
+      <div className="space-y-4">
         <div>
-            <div className="container">
-                <h3>EDIT DETAILS</h3>
-
-                {/* <form> */}
-                    <span>Name <span id="asteric"></span></span>
-                    <input className="form-control" type="text" placeholder="Enter your Name" value={name} onChange={(e)=>{setname(e.target.value)}} required/>
-                    <span>Phone Number <span id="asteric"></span></span>
-                    <input className="form-control" type="number" placeholder="Enter your Phone Number" value={phone} onChange={(e)=>{setphone(e.target.value)}} required/>
-                    <span>About Yourself</span>
-                    <textarea className="form-control" type="text" placeholder="About Yourself" value={about} onChange={(e)=>{setabout(e.target.value)}}/>
-                    
-                    <button className="btn"   onClick={handleApi} >UPDATE</button>
-                {/* </form> */}
-              
-            </div>       
+          <label className=" block text-sm text-black">Name</label>
+          <input
+            className="w-full p-2 rounded-md bg-white text-black border border-gray-600"
+            type="text"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <label className="block text-sm font- text-black">Phone Number</label>
+          <input
+            className="w-full p-2 rounded-md bg-white text-black border border-gray-600"
+            type="text"
+            placeholder="Enter your phone number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-normal text-black">
+            About Yourself
+          </label>
+          <textarea
+            className="w-full p-2 rounded-md bg-white text-black border border-gray-600"
+            placeholder="About yourself"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+          />
+        </div>
+        <button
+          className="w-full p-2 text-white bg-[#800080] rounded-md hover:bg-[#800060] transition duration-200"
+          onClick={handleApi}
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default EditProfile;
