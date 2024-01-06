@@ -14,7 +14,7 @@ function AddProduct(){
     const [category,setcategory]=useState('');
     const [pimage,setpimage]=useState('');
     const [priceNegotiable, setPriceNegotiable] = useState(false);
-    const [whatsappNumber,setwhatsappNumber]=useState();
+    const [whatsappNumber,setwhatsappNumber]=useState('91');
 
 
     useEffect(()=>{

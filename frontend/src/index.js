@@ -32,6 +32,7 @@ import EditProduct from './components/EditProduct.jsx';
 import EditProfile from './components/EditProfile.jsx';
 import AdminLogin from './components/AdminLogin.jsx';
 import AdminPage from './components/AdminPage.jsx';
+import ManageUsersPage from './components/dashboard/ManageUser.jsx';
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,8 @@ const router = createBrowserRouter([
     path: "/my-profile",
     element: (<MyProfile/>),
   },
+  {path: "/admin-page/manage-users",
+  element: (<ManageUsersPage/>),}
 ]);
 
 createRoot(document.getElementById("root")).render(

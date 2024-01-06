@@ -6,39 +6,63 @@
     padding: 7px;
     background-color: white;
     margin: 7px;
+    z-index: 2; /* Ensure the icon is above other elements */
 }
-.icons{
+
+.icons, .red-icons {
     font-size: 32px;
     height: 32px;
     width: 32px;
+    cursor: pointer;
+}
+
+.icons {
     color: #ddd;
-    cursor: pointer;
 }
-.red-icons{
-    font-size: 32px;
-    height: 32px;
-    width: 32px;
-    color:red;
-    cursor: pointer;
-}
-.icons:hover{
+
+.icons:hover, .red-icons {
     color: red;
 }
 
+.card {
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 15px;
+    overflow: hidden;
+    background-color: #fff;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-.center-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Set height to the viewport height for vertical centering */
-  }
-  
-  /* Increase the size of the message */
-  .center-message p {
-    font-size: 24px;
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card div:not(.icon-container) { /* Style for the content divs, excluding the icon container */
+    padding: 15px;
     text-align: center;
-    color: #333; /* Change the color if needed */
-  }
+}
 
+.card p {
+    margin: 5px 0;
+}
 
- 
+.buy-now-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    display: block;
+    width: calc(100% - 30px); /* Adjust for padding */
+    margin: 10px auto;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buy-now-button:hover {
+    background-color: #0056b3;
+}

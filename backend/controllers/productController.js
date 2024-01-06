@@ -107,9 +107,6 @@ module.exports.editProduct= (req, res) => {
 
     const addedBy=req.body.userId;
   
-  
-    // const product = new Products({ pname, pdesc, price, category, pimage,addedBy,
-    //   pLoc:{type:'Point',coordinates:[plat,plong]} });
     let editObj={};
 
     if(pname){
@@ -152,39 +149,22 @@ module.exports.editProduct= (req, res) => {
   
   }
 
-module.exports.approveProducts=(req,res)=>{
-   const pid=rew.body.productId;
-   
-   let editObj={};
-   editObj.isApproved=true;
+module.exports.approveProducts = async (req, res) => {
+  const pid = req.params.pId;
 
+  try {
+      // Find the product and wait for the operation to complete
+      const result = await Products.findOne({ _id: pid });
+      var isaprvd = !result.isApproved;
+      console.log(isaprvd);
 
-  Products.updateOne({_id:pid},editObj,{new:true})
-      .then((result) => {
-        res.send({ message: 'Product approved Successfully',product:result })
-      })
-      .catch(() => {
-        res.send({ message: 'server error while updating ' })
-      })
+      // Update the product and wait for the operation to complete
+      const updateResult = await Products.updateOne({ _id: pid }, { $set: { isApproved: isaprvd } });
 
-  // const productId = req.body.productId;
-
-  // // Update the product in the database
-  // Products.findByIdAndUpdate(
-  //   productId,
-  //   { $set: { isApproved: true } },
-  //   { new: true }
-  // )
-  //   .then((result) => {
-  //     if (!result) {
-  //       return res.status(404).json({ message: 'Product not found' });
-  //     }
-
-  //     res.send({ message: 'Product approved successfully', product: result });
-  //   })
-  //   .catch(() => {
-  //     res.send({ message: 'error in approving ' });
-  //   });
+      res.send({ message: 'Product approved Successfully', product: updateResult });
+  } catch (e) {
+      res.send({ message: 'Server error while updating ' + `\n ${e}` });
+  }
 }
 
 module.exports.getProducts= (req, res) => {
@@ -221,22 +201,12 @@ module.exports.myProducts=(req, res) => {
   }
 
 module.exports.deleteProduct=(req,res)=>{
-
-    Products.findOne({_id:req.body.pid})
-    .then((result)=>{
-        if(result.addedBy==req.body.userId){
-            Products.deleteOne({_id:req.body.pid})
-            .then((deleteResult)=>{
-                if(deleteResult.acknowledged){
-                    res.send({message:'success'})
-                }
-            })
-            .catch(()=>{
-                res.send({message:'server error'})
-            })
-        }
+    Products.findByIdAndRemove(req.body.pid)
+    .then(() => {
+      res.send({ message: 'Product deleted successfully' });
     })
-    .catch((err)=>{
-        res.send({message:"server error"})
-    })
+    .catch((error) => {
+      console.error('Error deleting user:', error);
+      res.status(500).send({ message: 'Server error' });
+    });
 }
