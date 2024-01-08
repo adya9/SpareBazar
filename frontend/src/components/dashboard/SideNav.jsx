@@ -1,5 +1,7 @@
 import React from "react";
 import { FaUsers, FaFileAlt, FaPowerOff } from "react-icons/fa";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Map of links to display in the side navigation.
 
@@ -32,6 +34,17 @@ function NavLinks() {
 }
 
 export default function SideNav() {
+	const [userRole, setUserRole] = useState(localStorage.getItem("role"));
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		localStorage.removeItem("role");
+		setUserRole(null); // Immediately update the userRole state to null
+
+		navigate("/");
+	};
+
 	return (
 		<div className="flex h-screen flex-col items-center bg-gray-100 m-2 shadow-lg w-64">
 			<div className="flex items-center justify-center w-full h-20  bg-[#800080] rounded-lg shadow-md">
@@ -44,7 +57,9 @@ export default function SideNav() {
 			</div>
 			<NavLinks />
 			<form className="mt-auto w-full  px-4 mb-5">
-				<button className="flex  items-center justify-center h-12 w-full gap-2 rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-700 hover:bg-blue-200 mt-2">
+				<button
+					onClick={handleLogout}
+					className="flex  items-center justify-center h-12 w-full gap-2 rounded-md bg-gray-50 p-2 text-sm font-medium text-gray-700 hover:bg-blue-200 mt-2">
 					<FaPowerOff className="w-5 h-5" />
 					<span>Sign Out</span>
 				</button>
