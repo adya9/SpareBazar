@@ -15,6 +15,7 @@ function AddProduct(){
     const [pimage,setpimage]=useState('');
     const [priceNegotiable, setPriceNegotiable] = useState(false);
     const [whatsappNumber,setwhatsappNumber]=useState('91');
+    const [address,setaddress]=useState('');
 
 
     useEffect(()=>{
@@ -43,6 +44,7 @@ function AddProduct(){
             formData.append('userId',localStorage.getItem('userId'))
 
             formData.append('priceNegotiable', priceNegotiable);
+            formData.append('address',address);
 
             
             const url='http://localhost:4000/add-product';
@@ -108,6 +110,7 @@ function AddProduct(){
                   
 
                      <br></br><br></br>
+                     <input className="form-control" type="text" placeholder="Enter the city and state Name" value={address} onChange={(e)=>{setaddress(e.target.value)}} required />
                     <label className='addproduct-label'>Upload Image</label>
                     <input className="form-control" type="file" placeholder="Upload Image"   onChange={(e)=>{setpimage(e.target.files[0])}} required />
                     <button className="btn btn-primary" onClick={handleApi}>ADD</button>

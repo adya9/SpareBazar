@@ -97,6 +97,7 @@ function ManageProducts() {
 									</p>
 									<p className="text-green-600">{item.pdesc}</p>
 									<h3 className="text-xl text-green-600">₹{item.price}/-</h3>
+									<h3 className="text-xl text-black-800">Product SOLD : {item.isSold}</h3>
 									<button
 										onClick={() => handleApprovalToggle(item._id)}
 										className={`mt-4 py-2 px-4 rounded transition duration-300 ${

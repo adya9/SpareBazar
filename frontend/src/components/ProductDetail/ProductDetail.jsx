@@ -107,9 +107,16 @@ function ProductDetail() {
                     Price : {product.price}
                   </p>
                   <p class="text-lg font-semibold mb-6">
-                    {product.priceNegotiable
+                    {/* {product.priceNegotiable
                       ? "Price is negotiable"
-                      : "Fixed price"}
+                      : "Fixed price"} */}
+                      Price is : {product.priceNegotiable}
+                  </p>
+                  <p class="text-lg font-semibold mb-6">
+                    {/* {product.priceNegotiable
+                      ? "Price is negotiable"
+                      : "Fixed price"} */}
+                      Location is : {product.address}
                   </p>
                   <div className="flex justify-start">
                     {/* <p className="flex justify-center p-2">
@@ -153,8 +160,8 @@ function ProductDetail() {
 
             {/* Use This chat code, for now i have commented it.*/}
 
-            {/* <div className="chat-section">
-                            <h3>CHATS</h3>
+            <div className="chat-section">
+                            <h2 className="text-black font-bold">QUERY BOX</h2>
                             {msgs.map((item, index) => (
                                 <p key={item._id} className={`chat-message ${item.username === localStorage.getItem('username') ? 'user-message' : 'other-message'}`}>
                                     {item.username}: {item.msg}
@@ -164,7 +171,7 @@ function ProductDetail() {
                                 <input value={msg} onChange={(e) => setmsg(e.target.value)} type="text" />
                                 <button onClick={handleSend}>SEND</button>
                             </div>
-                        </div> */}
+                        </div>
           </div>
         )}
       </div>

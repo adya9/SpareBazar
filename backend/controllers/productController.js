@@ -5,6 +5,9 @@ let schema=new mongoose.Schema({ pname: String, pdesc: String, price: String,wha
     type: Boolean,
     default: false,
   },
+  isSold:String,
+  address:String,
+    // default: No // default to not sold
     pLoc:{
       type:{
         type:String,
@@ -73,10 +76,12 @@ module.exports.addProduct= (req, res) => {
     const pimage = req.file.path;
     const whatsappNumber=req.body.whatsappNumber;
     const priceNegotiable=req.body.priceNegotiable;
+    const isSold=req.body.isSold;
     const addedBy=req.body.userId;
+    const address=req.body.address;
   
   
-    const product = new Products({ pname, pdesc, price,whatsappNumber, category, pimage,priceNegotiable,addedBy,
+    const product = new Products({ pname, pdesc, price,whatsappNumber, category, pimage,priceNegotiable,isSold,addedBy,address,
       pLoc:{type:'Point',coordinates:[plat,plong]} });
     product.save()
       .then(() => {
@@ -98,6 +103,8 @@ module.exports.editProduct= (req, res) => {
     const category = req.body.category;
     const whatsappNumber=req.body.whatsappNumber;
     const priceNegotiable=req.body.priceNegotiable;
+    const isSold=req.body.isSold;
+    const address=req.body.address;
     let pimage='';
     // && req.file.pimage
     if(req.file)
@@ -133,9 +140,17 @@ module.exports.editProduct= (req, res) => {
     {
       editObj.priceNegotiable=priceNegotiable;
     }
+    if(isSold)
+    {
+      editObj.isSold=isSold;
+    }
     if(pimage){
       editObj.pimage=pimage;
       
+    }
+    if(address)
+    {
+      editObj.address=address;
     }
     
 

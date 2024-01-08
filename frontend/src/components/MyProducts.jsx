@@ -12,6 +12,7 @@ function MyProducts() {
     const [search,setsearch]=useState('');
     const [refresh,setrefresh]=useState(false);
     const [loading, setLoading] = useState(true);
+    // const [isSold, setIsSold] = useState(false);
 
     // useEffect(() => {
     //     if (!localStorage.getItem('token')) {
@@ -91,30 +92,51 @@ function MyProducts() {
         navigate('/product/'+id);
     }
 
-    const handleDel=(pid)=>{
-        console.log(pid);
-        if(!localStorage.getItem('userId'))
-        {
-            alert('please login first')
-            return;
-        }
-        const url='http://localhost:4000/delete-product';
-        const data={
-            pid,
-            userId:localStorage.getItem('userId')
-        }
-        axios.post(url,data)
-        .then((res)=>{
-            if(res.data.message)
-            {
-                alert('Successfully Deleted');
-                setrefresh(!refresh);
-            }
-        })
-        .catch((err)=>{
-            alert('server err')
-        })
-    }
+    // const handleDel=(pid)=>{
+    //     console.log(pid);
+    //     if(!localStorage.getItem('userId'))
+    //     {
+    //         alert('please login first')
+    //         return;
+    //     }
+    //     const url='http://localhost:4000/delete-product';
+    //     const data={
+    //         pid,
+    //         userId:localStorage.getItem('userId')
+    //     }
+    //     axios.post(url,data)
+    //     .then((res)=>{
+    //         if(res.data.message)
+    //         {
+    //             alert('Successfully Deleted');
+    //             setrefresh(!refresh);
+    //         }
+    //     })
+    //     .catch((err)=>{
+    //         alert('server error in delete')
+    //     })
+    // }
+
+    const handleDel= (pid) => {
+		const url = "http://localhost:4000/delete-product";
+		const data = { pid };
+		if (window.confirm("Are you sure you want to delete this product?")) {
+			axios
+				.delete(url, { data })
+				.then((res) => {
+					console.log(res.data);
+					if (res.data.message) {
+						console.log(res.data.message);
+						console.log("Product Deleted Successfully");
+                        setrefresh(!refresh);
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+					console.log("Product Deleted Successfully");
+				});
+		}
+	};
 
     
 
@@ -142,11 +164,21 @@ function MyProducts() {
                                 <p className='p-2'>{item.pname} | {item.category}</p>
                                 <p className='p-2 text-success'>{item.pdesc} </p>
                                 <h3 className='p-2 text-success'>₹{item.price}/- </h3>
+                                {/* <label className="block text-lg font-normal text-black">
+                    Is Sold:
+                    <input 
+                        type="checkbox" 
+                        checked={isSold} 
+                        onChange={() => setIsSold(!isSold)} 
+                    />
+                </label> */}
+                                
                                 <div className='button-container'>
                                 <p>
                                     <Link to={ `/edit-product/${item._id}` }><button className='edit-link'>EDIT</button></Link>
                                 </p>
-                                <button onClick={()=>handleDel(item._id)} id='del'>DELETE</button>
+                               
+                                <button onClick={()=>handleDel(item._id)} id='del' className='delete-btn'>DELETE</button>
                                 </div>
 
                             </div>

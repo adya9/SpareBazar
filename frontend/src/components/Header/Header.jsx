@@ -299,9 +299,13 @@ function Header({ user, ...props }) {
     };
 
     let locations = [
-        { "latitude": 28.6139, "longitude": 77.2090, "placeName": "New Delhi,Delhi" },
-        { "latitude": 19.0760, "longitude": 72.8777, "placeName": "Mumbai,Maharastra" },
+        // { "latitude": 28.6139, "longitude": 77.2090, "placeName": "New Delhi,Delhi" },
         { "latitude": 12.0225043, "longitude": 79.8486953, "placeName": "Pondicherry" },
+        { "latitude": 19.0760, "longitude": 72.8777, "placeName": "Mumbai,Maharastra" },
+       
+        { "latitude": 27.0238, "longitude": 74.2179, "placeName": "Rajasthan" },
+        { "latitude": 23.7957, "longitude": 86.4304, "placeName": "jharkhand" }
+
     ];
 
     const placeholderImageUrl = 'https://img.freepik.com/premium-vector/anonymous-user-circle-icon-vector-illustration-flat-style-with-long-shadow_520826-1931.jpg';
@@ -358,14 +362,39 @@ function Header({ user, ...props }) {
                         borderRadius: '7px',
                         overflow: 'hidden',
                     }}>
-                         {!!localStorage.getItem('token') && (
+                         {(!!localStorage.getItem('token') && userRole !== 'admin') && (
                         <div style={{ margin: '8px' }}>
                             <Link to="/my-profile" style={{ textDecoration: 'none' }}>
                                 <button className="btnn" style={{ width: '100%' }}>PROFILE</button>
                             </Link>
                         </div>
+
+                        
                     )}
+                     {(!!localStorage.getItem('token') && userRole !== 'admin') && (
+                          <div style={{ margin: '8px' }}>
+                        
+                            <Link to="/add-product" style={{ textDecoration: 'none' }}>
+                                <button className="btnn" style={{ width: '100%' }}>ADD PRODUCT</button>
+                            </Link>
+                        </div>)}
+
+                        {(!!localStorage.getItem('token') && userRole !== 'admin') && (
                         <div style={{ margin: '8px' }}>
+                       
+                            <Link to="/liked-products" style={{ textDecoration: 'none' }}>
+                                <button className="btnn" style={{ width: '100%' }}>FAVOURITES</button>
+                            </Link>
+                        </div>)}
+
+                        {(!!localStorage.getItem('token') && userRole !== 'admin') && (
+                        <div style={{ margin: '8px' }}>
+                       
+                            <Link to="/my-products" style={{ textDecoration: 'none' }}>
+                                <button className="btnn" style={{ width: '100%' }}>MY PRODUCT</button>
+                            </Link>
+                        </div>)}
+                        {/* <div style={{ margin: '8px' }}>
                             <Link to="/add-product" style={{ textDecoration: 'none' }}>
                                 <button className="btnn" style={{ width: '100%' }}>ADD PRODUCT</button>
                             </Link>
@@ -379,7 +408,7 @@ function Header({ user, ...props }) {
                             <Link to="/my-products" style={{ textDecoration: 'none' }}>
                                 <button className="btnn" style={{ width: '100%' }}>MY PRODUCT</button>
                             </Link>
-                        </div>
+                        </div> */}
                         {(!localStorage.getItem('token') || userRole !== 'admin') && (
                             <div style={{ margin: '8px' }}>
                                 <Link to="/admin-login" style={{ textDecoration: 'none' }}>

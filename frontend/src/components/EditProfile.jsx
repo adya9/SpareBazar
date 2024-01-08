@@ -23,7 +23,7 @@ function EditProfile({ user }) {
       .then((res) => {
         if (res.data.message) {
           alert(res.data.message);
-          navigate("/my-profile");
+          navigate("/");
         }
       })
       .catch((err) => {
@@ -36,7 +36,7 @@ function EditProfile({ user }) {
     <div className="p-4">
       <div className="space-y-4">
         <div>
-          <label className=" block text-sm text-black">Name</label>
+          <label className=" block text-lg text-black">Name</label>
           <input
             className="w-full p-2 rounded-md bg-white text-black border border-gray-600"
             type="text"
@@ -46,7 +46,7 @@ function EditProfile({ user }) {
           />
         </div>
         <div>
-          <label className="block text-sm font- text-black">Phone Number</label>
+          <label className="block text-lg font- text-black">Phone Number</label>
           <input
             className="w-full p-2 rounded-md bg-white text-black border border-gray-600"
             type="text"
@@ -56,7 +56,7 @@ function EditProfile({ user }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-normal text-black">
+          <label className="block text-lg font-normal text-black">
             About Yourself
           </label>
           <textarea

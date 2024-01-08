@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react';
+import { useEffect,useState, useSyncExternalStore } from 'react';
 import Header from './Header/Header';
 import './AddProduct/AddProduct.css';
 
@@ -17,7 +17,9 @@ function EditProduct(){
     const [pimage,setpimage]=useState('');
     const [poldimage,setpoldimage]=useState('');
     const [priceNegotiable, setPriceNegotiable] = useState(false);
+    const [isSold, setIsSold] = useState(false);
     const [whatsappNumber,setwhatsappNumber]=useState();
+    const [address, setaddress]=useState('');
     
 
     useEffect(()=>{
@@ -44,6 +46,8 @@ function EditProduct(){
                     setcategory(product.category);
                     setpoldimage(product.pimage);
                     setPriceNegotiable(product.priceNegotiable);
+                    setIsSold(product.isSold);
+                    setaddress(product.address);
 
                 }
             })
@@ -66,6 +70,8 @@ function EditProduct(){
             formData.append('pimage',pimage)
             formData.append('userId',localStorage.getItem('userId'))
             formData.append('priceNegotiable', priceNegotiable);
+            formData.append('isSold', isSold);
+            formData.append('address',setaddress);
             
             const url='http://localhost:4000/edit-product';
             axios.post(url,formData)
@@ -126,9 +132,33 @@ function EditProduct(){
               />
               Price Non-Negotiable
             </label>
-                  
 
+            <br></br><br></br>
+
+        
+                  
+            <label className='addproduct-label negotiable-label'>
+              <input
+                type="radio"
+                value="YES"
+                checked={isSold === 'YES'}
+                onChange={() => setIsSold('YES')}
+              >
+             </input>
+             Product Sold YES
+            </label>
+
+            <label className='addproduct-label non-negotiable-label'>
+              <input
+                type="radio"
+                value="NO"
+                checked={isSold === 'NO'}
+                onChange={() => setIsSold('NO')}
+              />
+              Product Sold NO
+            </label>
                      <br></br><br></br>
+                     <input className="form-control" type="text" placeholder="Enter the city and state Name" value={address} onChange={(e)=>{setaddress(e.target.value)}} required />
                     <label className='addproduct-label'>Upload Image</label>
                     <input style={{width:'50%'}} className="form-control" type="file" placeholder="Upload Image"   onChange={(e)=>{setpimage(e.target.files[0])}} required />
                     <img src={'http://localhost:4000/'+poldimage} width={150} height={150}/><br></br>
